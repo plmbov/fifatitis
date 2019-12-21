@@ -1,0 +1,42 @@
+.App {
+    height: 100%;
+    width: 100%;
+}
+
+.Container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Dropdowns{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+@media(max-width: 800px){
+    .Container{
+    background-size: 100vw 50vh;
+    background-position-y: center;
+    }
+}
+
+h1{
+    font-family: EASPORTS15;
+    font-size: 150px;
+    margin: 0 auto;
+    color: #F5F5F5;
+}
+
+.BackgroundColor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 12, 182, 0.3);
+    z-index: -100;
+}

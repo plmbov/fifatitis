@@ -1,0 +1,37 @@
+input{
+    background-color: transparent;
+    margin: 0 10px;
+    font: inherit;
+    animation-name: autofill;
+}
+
+input:-webkit-autofill {
+    animation-name: autofill;
+    animation-fill-mode: both;
+}
+
+button{
+    background-color: transparent;
+    color: rgb(218, 0, 87);
+    border: 1px solid rgb(218, 0, 87);
+    padding: 2px 10px;
+    outline: none;
+    font-weight: bold;
+    font-size: 24px;
+    font:inherit;
+    transition: .3s ease;
+    cursor: pointer;
+    margin: 0 5px;
+    letter-spacing: 1px;
+}
+
+button:hover{
+    background-color: rgba(245, 245, 245, 0.7);
+}
+
+@keyframes autofill {
+    to {
+        color: inherit;
+        background: inherit;
+    }
+}

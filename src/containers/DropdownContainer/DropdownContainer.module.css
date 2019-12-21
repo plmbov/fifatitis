@@ -1,0 +1,29 @@
+p {
+margin: 20px;
+}
+
+h2 {
+    font-size: 30px;
+    margin: 0 0 0 10px;
+    letter-spacing: 1px;
+}
+
+.Container {
+    position: relative;
+    top: 0;
+    bottom: 0;
+}
+
+.Content{
+    height: 600px;
+    width: 400px;
+    background-color: rgba(245, 245, 245, 0.7);
+    margin: 10px 10px 10px 0;
+}
+
+.halfHeightContent{
+    height: 295px;
+    width: 400px;
+    background-color: rgba(245, 245, 245, 0.7);
+    margin: 10px 0px 10px 0;
+}

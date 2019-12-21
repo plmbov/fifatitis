@@ -1,0 +1,24 @@
+.Button{
+    background-color: rgb(218, 0, 87);
+    color: #F5F5F5;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 40px;
+    cursor: pointer;
+    bottom: 0;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    -o-user-select:none;
+    user-select:none;
+}
+
+.Button:hover{
+    background-color: rgb(196, 0, 78);
+}
+
+.Button:active{
+    background-color: rgb(185, 0, 74);
+}

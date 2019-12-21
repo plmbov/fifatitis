@@ -1,0 +1,41 @@
+.InputGoalsContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 400px;
+    width: 120px;
+}
+
+.TopArrow{
+    transform: rotate(0deg);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 20px;
+}
+
+.BottomArrow{
+    transform: rotate(180deg);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 200px;
+}
+
+.InputGoalsContainer p{
+    font-size: 40px;
+}
+
+.GoalsContainer{
+    width: 100%;
+    position: absolute;
+}
+
+.Goals{
+    position: absolute;
+    -webkit-user-select: none;       
+    -moz-user-select: none;
+    -ms-user-select: none;
+    width: 80px;
+    left: 20px;
+}

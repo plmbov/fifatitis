@@ -1,0 +1,49 @@
+.Container{
+    display: flex;
+    height: 200px;
+}
+
+.LeftArrow{
+    transform: rotate(-90deg);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: absolute;
+    top: 130px;
+    left: 18px;
+}
+
+.RightArrow{
+    transform: rotate(90deg);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: absolute;
+    top: 130px;
+    right: 18px;
+}
+
+.Container h3 {
+    width: 300px;
+    font-size: 40px;
+    word-wrap: normal;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    -webkit-user-select: none;       
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.RestaurantName{
+    position: absolute;
+    left: 50px;
+    top: 60px;
+}
+
+.Button{
+    width: 400px;
+    position: absolute;
+    bottom: 0;
+}
