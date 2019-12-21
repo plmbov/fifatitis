@@ -1,7 +1,7 @@
 import React from 'react'
-import classes from './DropdownContainer.module.css'
+import classes from './Panel.module.css'
 
-const DropdownContainer = (props) => {
+const Panel = (props) => {
 
     let contentClasses = ''
     if (props.heightClass === 'full') {
@@ -20,4 +20,4 @@ const DropdownContainer = (props) => {
     )
 }
 
-export default DropdownContainer
+export default Panel

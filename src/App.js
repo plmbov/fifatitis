@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DropdownContainer from './containers/DropdownContainer/DropdownContainer';
+import Panel from './containers/Panel/Panel';
 import classes from './App.module.css'
 import RandomTeams from './components/RandomTeams/RandomTeams';
 import AddGameScore from './components/AddGameScore/AddGameScore';
@@ -48,12 +48,12 @@ class App extends Component {
         <div className={classes.Container}>
           <h1>FIFATITIS</h1>
           {userMenu}
-          <div className={classes.Dropdowns}>
-            <DropdownContainer content={<RandomTeams />} heightClass='full'>CHOOSE RANDOM TEAMS</DropdownContainer>
-            <DropdownContainer content={<AddGameScore user={this.state.user} />} heightClass='full'>ADD A NEW GAME SCORE</DropdownContainer>
+          <div className={classes.Panels}>
+            <Panel content={<RandomTeams />} heightClass='full'>CHOOSE RANDOM TEAMS</Panel>
+            <Panel content={<AddGameScore user={this.state.user} />} heightClass='full'>ADD A NEW GAME SCORE</Panel>
             <div className={classes.Subcontainer}>
-              <DropdownContainer content={<BrowseStatistics />} heightClass='half'>STATISTICS</DropdownContainer>
-              <DropdownContainer content={<OrderFood />} heightClass='half'>ORDER FOOD</DropdownContainer>
+              <Panel content={<BrowseStatistics />} heightClass='half'>STATISTICS</Panel>
+              <Panel content={<OrderFood />} heightClass='half'>ORDER FOOD</Panel>
             </div>
           </div>
         </div>

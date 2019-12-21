@@ -1,7 +1,7 @@
 import firebase from 'firebase'
 
 var firebaseConfig = {
-    apiKey: "AIzaSyCEXI146_bjK6TshM2P3PzJY3PUdCDdMsE",
+    apiKey: "AIzaSyCBlJYcNtPBIL1T1EQ36qOqoZPN5TNMJAo",
     authDomain: "fifatitis.firebaseapp.com",
     databaseURL: "https://fifatitis.firebaseio.com",
     projectId: "fifatitis",
