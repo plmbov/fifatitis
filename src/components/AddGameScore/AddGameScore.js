@@ -59,7 +59,12 @@ export class AddGameScore extends Component {
         }
 
         const currentYear = result.dateAndTime.slice(6, 10)
-        const currentMonth = result.dateAndTime.slice(3, 5)
+        let currentMonth = result.dateAndTime.slice(3, 5)
+
+        // Games played after midnight on the last day of the month count to the ending month
+        if (parseInt(currentDateFormatted.slice(0, 2)) === 1 && parseInt(currentDateFormatted.slice(11, 13)) < 6) {
+            currentMonth = "0" + (parseInt(result.dateAndTime.slice(3, 5)) - 1).toString()
+        }
 
 
         axios.post(`results/${currentYear}/${currentMonth}.json`, result)

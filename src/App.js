@@ -22,6 +22,7 @@ class App extends Component {
 
   authListener() {
     fire.auth().onAuthStateChanged(user => {
+
       if (user) {
         this.setState({ user })
       } else {
@@ -31,14 +32,18 @@ class App extends Component {
   }
 
   render() {
+
+    console.log(this.state.user)
     let userMenu = <Login />
 
     if (this.state.user) {
       userMenu = (
-        <>
-          <p>Welcome user!</p>
-          <Button clicked={() => fire.auth().signOut()}>LOG OUT</Button>
-        </>
+        <div className={classes.LoginMenu}>
+          <p>Welcome {this.state.user.email.split("@")[0]}!</p>
+          <button
+            onClick={() => fire.auth().signOut()}
+          >LOG OUT</button>
+        </div>
       )
     }
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import fire from '../../firebase'
-import Button from '../UI/Button/Button'
-import classes from './Login.module.css'
+import './Login.module.css'
 
 class Login extends Component {
 

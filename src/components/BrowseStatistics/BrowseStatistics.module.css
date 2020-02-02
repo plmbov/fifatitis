@@ -1,6 +1,10 @@
 .Container{
     height: 100%;
     display: flex;
-    justify-content: center;
     align-content: center;
+    flex-direction: column;
+}
+
+.Container p{
+    text-align: center;
 }

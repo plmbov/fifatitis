@@ -82,14 +82,14 @@ export class RandomTeams extends Component {
 
         let bojoTeamRender = (
             <div className={classes.TeamRenderBojo}>
-                <img src={Images[this.state.bojoTeam]} />
+                <img src={Images[this.state.bojoTeam]} alt='team-logo' />
                 <p>{this.state.bojoTeam}</p>
             </div>
         )
 
         let maciekTeamRender = (
             <div className={classes.TeamRenderMaciek}>
-                <img src={Images[this.state.maciekTeam]} />
+                <img src={Images[this.state.maciekTeam]} alt='team-logo' />
                 <p>{this.state.maciekTeam}</p>
             </div>
         )

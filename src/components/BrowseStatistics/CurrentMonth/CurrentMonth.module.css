@@ -1,0 +1,35 @@
+.Container{
+    display: flex;
+    width: 400px;
+
+}
+
+.Bojo, .Maciek{
+    display: flex;
+    width: 200px;
+}
+
+.NameAndPhoto{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Name{
+    font-size: 30px;
+    margin: 0 auto;
+
+}
+.Stats{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+}
+
+.Stats p{
+margin: 0;
+font-size: 20px;
+
+}

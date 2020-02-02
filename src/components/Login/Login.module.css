@@ -1,8 +1,9 @@
-input{
+form input{
     background-color: transparent;
     margin: 0 10px;
     font: inherit;
     animation-name: autofill;
+    width: 250px;
 }
 
 input:-webkit-autofill {
@@ -23,6 +24,7 @@ button{
     cursor: pointer;
     margin: 0 5px;
     letter-spacing: 1px;
+    height: 30px;
 }
 
 button:hover{
