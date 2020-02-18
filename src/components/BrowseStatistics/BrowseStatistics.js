@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import classes from './BrowseStatistics.module.css'
 import axios from '../../axiosInstance'
-import Loader from '../UI/Loader/Loader';
+import { connect } from 'react-redux'
 import CurrentMonth from './CurrentMonth/CurrentMonth'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import fadeTransition from '../../transitions/fade.module.css'
+import * as actions from '../../store/actions'
 
 class BrowseStatistics extends Component {
 
@@ -15,7 +16,10 @@ class BrowseStatistics extends Component {
     }
 
     componentDidMount() {
-        //        setInterval(() => this.setState({ lastMonthShown: !this.state.lastMonthShown }), 7000);
+        this.fetchUpToDateStats()
+    }
+
+    fetchUpToDateStats() {
         const d = new Date()
 
         const currentDateFormatted = ("0" + d.getDate()).slice(-2) + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" +
@@ -38,6 +42,7 @@ class BrowseStatistics extends Component {
                 this.setState({ lastMonthStats })
             }
             )
+        this.props.onStatsUpdated()
     }
 
     mapObjectToCollection(object) {
@@ -51,6 +56,10 @@ class BrowseStatistics extends Component {
     }
 
     render() {
+        if (this.props.resultAdded) {
+            this.fetchUpToDateStats()
+        }
+
         return (
             <div className={classes.Container}>
                 <TransitionGroup>
@@ -70,4 +79,16 @@ class BrowseStatistics extends Component {
 
 }
 
-export default BrowseStatistics
+const mapStateToProps = state => {
+    return {
+        resultAdded: state.resultAdded
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onStatsUpdated: () => dispatch(actions.statsUpdated())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BrowseStatistics)

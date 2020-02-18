@@ -1,5 +1,6 @@
 .Backdrop {
     position: fixed;
+    padding: 100px;
     top: 0;
     left: 0;
     width: 100%;

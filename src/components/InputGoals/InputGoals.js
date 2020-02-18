@@ -27,7 +27,7 @@ const InputGoals = (props) => {
             <div className={classes.BottomArrow} onClick={props.decrease}>
                 <Arrow />
             </div>
-        </div>
+        </div >
     )
 }
 

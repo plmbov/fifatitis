@@ -3,9 +3,11 @@ import classes from './AddGameScore.module.css'
 import Button from '../UI/Button/Button'
 import InputGoals from '../InputGoals/InputGoals'
 import axios from '../../axiosInstance'
+import { connect } from 'react-redux'
 import PopUp from '../UI/PopUp/PopUp'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import fadeTransition from '../../transitions/fade.module.css'
+import * as actions from '../../store/actions'
 
 export class AddGameScore extends Component {
 
@@ -67,8 +69,14 @@ export class AddGameScore extends Component {
         }
 
 
-        axios.post(`results/${currentYear}/${currentMonth}.json`, result)
+        axios.post(`results/${currentYear}/${currentMonth}.json?auth=` + this.props.tokenId, result)
             .then(this.setState({ Bojo: 0, Maciek: 0, winner: null, popUpShown: true, resultSubmitted: true }))
+            .catch(error => {
+                alert('Log in to add a new game score!')
+                this.props.onRemoveCredentials()
+            }
+            )
+        this.props.onRefreshToken(this.props.refreshToken)
     }
 
     increaseScoredGoals = (playerName) => {
@@ -82,6 +90,7 @@ export class AddGameScore extends Component {
     }
 
     closePopUp = () => {
+        this.props.onResultAdded()
         this.setState({ popUpShown: false, resultSubmitted: false })
     }
 
@@ -99,9 +108,11 @@ export class AddGameScore extends Component {
         if (!this.props.user) {
             popUp = <PopUp isShown={this.state.popUpShown} closePopUp={this.closePopUp}>
                 <p>Sorry, only authenticated users can add new game scores.</p>
-                <Button clicked={this.closePopUp}
-                    style={{ 'transform': 'scale(0.5)', 'width': '250px', 'margin': '0 auto' }}
-                >OK</Button>
+                <div style={{ 'margin': '10px auto 0 auto', 'display': 'flex', 'justifyContent': 'center' }}>
+                    <Button clicked={this.closePopUp}
+                        style={{ 'transform': 'scale(0.7)', 'width': '250px' }}
+                    >OK</Button>
+                </div>
             </PopUp>
         }
         if (this.state.popUpShown && !this.state.resultSubmitted && this.props.user) {
@@ -111,14 +122,21 @@ export class AddGameScore extends Component {
                     <Button clicked={() => this.wonInPenalties('Bojo')}>BOJO</Button>
                 </div>
                 <Button clicked={() => this.wonInPenalties('Maciek')}>MACIEK</Button>
+                <div style={{ 'margin': '10px auto 0 auto', 'display': 'flex', 'justifyContent': 'center' }}>
+                    <Button clicked={this.closePopUp}
+                        style={{ 'transform': 'scale(0.7)', 'width': '250px' }}
+                    >CANCEL</Button>
+                </div>
             </PopUp>
         }
         if (this.state.popUpShown && this.state.resultSubmitted && this.props.user) {
             popUp = <PopUp isShown={this.state.popUpShown} closePopUp={this.closePopUp}>
                 <p>The result has been successfully submitted!</p>
-                <Button clicked={this.closePopUp}
-                    style={{ 'transform': 'scale(0.5)', 'width': '250px', 'margin': '0 auto' }}
-                >OK</Button>
+                <div style={{ 'margin': '10px auto 0 auto', 'display': 'flex', 'justifyContent': 'center' }}>
+                    <Button clicked={this.closePopUp}
+                        style={{ 'transform': 'scale(0.7)', 'width': '250px' }}
+                    >OK</Button>
+                </div>
             </PopUp>
         }
 
@@ -162,4 +180,19 @@ export class AddGameScore extends Component {
     }
 }
 
-export default AddGameScore
+const mapStateToProps = state => {
+    return {
+        tokenId: state.tokenId,
+        refreshToken: state.refreshToken
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onResultAdded: () => dispatch(actions.resultAdded()),
+        onRefreshToken: (refreshToken) => dispatch(actions.refreshToken(refreshToken)),
+        onRemoveCredentials: () => dispatch(actions.removeCredentials())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddGameScore)

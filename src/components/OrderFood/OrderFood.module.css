@@ -26,6 +26,7 @@
 .Container h3 {
     width: 300px;
     font-size: 40px;
+    font-weight: 300;
     word-wrap: normal;
     text-align: center;
     align-items: center;

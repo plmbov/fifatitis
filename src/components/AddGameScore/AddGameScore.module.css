@@ -14,6 +14,7 @@
 
 .PlayerName{
     font-size: 30px;
+    padding: 10px;
 }
 
 Button{
@@ -23,7 +24,7 @@ Button{
 input{
     background-color: #F5F5F5;
     border: none;
-    border-bottom: solid 1px rgb(218, 0, 87);
+    border-bottom: solid 1px #E72B5D;
 }
 
 input:focus{

@@ -17,13 +17,22 @@ h2 {
 .Content{
     height: 600px;
     width: 400px;
-    background-color: rgba(245, 245, 245, 0.7);
+    background-color: rgba(245, 245, 245, 0.85);
     margin: 10px 10px 10px 0;
 }
 
 .halfHeightContent{
     height: 295px;
     width: 400px;
-    background-color: rgba(245, 245, 245, 0.7);
+    background-color: rgba(245, 245, 245, 0.85);
     margin: 10px 0px 10px 0;
+}
+
+@media(max-width: 1000px){
+    .Content{
+        margin: 0 0 10px 0;
+    }
+    .halfHeightContent{
+        margin: 0 0 10px 0;
+    }
 }

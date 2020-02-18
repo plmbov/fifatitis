@@ -1,60 +1,71 @@
 import React, { Component } from 'react'
-import fire from '../../firebase'
+import { connect } from 'react-redux'
+import * as actions from '../../store/actions'
 import './Login.module.css'
+import classes from './Login.module.css'
 
 class Login extends Component {
 
-    login(event) {
-        event.preventDefault()
-        const email = document.getElementById('email').value
-        const password = document.getElementById('password').value
-
-        fire.auth().signInWithEmailAndPassword(email, password)
-            .then(user => {
-                console.log('Logged in!')
-            })
-            .catch(err => {
-                console.log(err.toString())
-            })
+    state = {
+        email: '',
+        password: ''
     }
 
-    // signUp() {
-    //     const email = document.getElementById('email').value
-    //     const password = document.getElementById('password').value
-
-    //     fire.auth().createUserWithEmailAndPassword(email, password)
-    //         .then(user => {
-    //             console.log('Signed up!')
-    //         })
-    //         .catch(err => {
-    //             console.log(err.toString())
-    //         })
-    // }
-
-    signUp() {
+    signUp(event) {
+        event.preventDefault()
         alert('Creating new accounts is temporarily blocked.')
     }
 
+    inputHandler = (inputId, event) => {
+        event.preventDefault()
+        this.setState({ [inputId]: event.target.value })
+    }
+
+    submitHander = (event) => {
+        event.preventDefault()
+        this.props.onAuth(this.state.email, this.state.password)
+    }
+
     render() {
-        return (
+        let loginMenu = (
             <div>
-                <form onSubmit={this.login}>
-                    <input id='email' type='email' placeholder='E-mail'></input>
-                    <input id='password' type='password' placeholder='Password'></input>
+                <form onSubmit={this.submitHander}>
+                    <input id='email' type='email' placeholder='E-mail' onChange={(event) => this.inputHandler('email', event)}></input>
+                    <input id='password' type='password' placeholder='Password' onChange={(event) => this.inputHandler('password', event)}></input>
                     <button type='submit'>SIGN IN</button>
                     <button onClick={this.signUp}>SIGN UP</button>
                 </form>
-                {/* <Button
-                    clicked={this.login}
-                    style={this.buttonStyle}
-                >LOG IN</Button>
-                <Button
-                    clicked={this.signUp}
-                    style={this.buttonStyle}
-                >SIGN UP</Button> */}
             </div>
+        )
+
+        if (this.props.userLogged) {
+            loginMenu = (
+                <div className={classes.userLogged}>
+                    <p>Enjoy using the app!</p>
+                    <button onClick={this.props.onRemoveCredentials}>LOG OUT</button>
+                </div>
+            )
+        }
+
+        return (
+            <>
+                {loginMenu}
+            </>
         )
     }
 }
 
-export default Login
+const mapStateToProps = state => {
+    return {
+        userLogged: state.tokenId !== null
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth: (email, password) => dispatch(actions.auth(email, password)),
+        onRemoveCredentials: () => dispatch(actions.removeCredentials())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

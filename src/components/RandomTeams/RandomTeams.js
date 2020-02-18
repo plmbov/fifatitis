@@ -41,6 +41,7 @@ export class RandomTeams extends Component {
     }
 
     drawTeams = () => {
+        this.setState({ loading: true })
         let teams = this.state.teams
         if (teams.length <= 1) {
             this.setState({ popUpShown: true })
@@ -59,6 +60,7 @@ export class RandomTeams extends Component {
                     this.setState({ loading: false })
                 })
         } else {
+            this.setState({ loading: true })
             const bojoTeam = this.state.teams[Math.floor(Math.random() * this.state.teams.length)].id
             let maciekTeam = this.state.teams[Math.floor(Math.random() * this.state.teams.length)].id
             while (bojoTeam === maciekTeam) {
@@ -74,29 +76,31 @@ export class RandomTeams extends Component {
             } else {
                 this.setState({ bojoTeam: bojoTeam, maciekTeam: maciekTeam, teams: teams })
             }
+            this.setState({ loading: false })
         }
     }
 
     render() {
         let popUp = null
 
-        let bojoTeamRender = (
-            <div className={classes.TeamRenderBojo}>
-                <img src={Images[this.state.bojoTeam]} alt='team-logo' />
-                <p>{this.state.bojoTeam}</p>
-            </div>
-        )
 
-        let maciekTeamRender = (
-            <div className={classes.TeamRenderMaciek}>
-                <img src={Images[this.state.maciekTeam]} alt='team-logo' />
-                <p>{this.state.maciekTeam}</p>
-            </div>
-        )
+        let bojoTeamRender = <Loader />
+        let maciekTeamRender = <Loader />
 
-        if (this.state.loading) {
-            bojoTeamRender = <Loader />
-            maciekTeamRender = <Loader />
+        if (!this.state.loading) {
+            bojoTeamRender = (
+                <div className={classes.TeamRenderBojo}>
+                    <img src={Images[this.state.bojoTeam]} alt='team-logo' />
+                    <p>{this.state.bojoTeam}</p>
+                </div>
+            )
+
+            maciekTeamRender = (
+                <div className={classes.TeamRenderMaciek}>
+                    <img src={Images[this.state.maciekTeam]} alt='team-logo' />
+                    <p>{this.state.maciekTeam}</p>
+                </div>
+            )
         }
 
         if (this.state.popUpShown) {
@@ -108,7 +112,7 @@ export class RandomTeams extends Component {
                     <p>There are no more available teams to draw.</p>
                     <p>The list of teams has been reset.</p>
                     <Button
-                        style={{ 'transform': 'scale(0.5)', 'width': '250px', 'margin': '0 auto' }}
+                        style={{ 'transform': 'scale(0.7)', 'width': '250px', 'margin': '0 auto' }}
                         clicked={() => this.setState({ popUpShown: !this.state.popUpShown })}>
                         OK</Button>
                 </div>
@@ -130,27 +134,11 @@ export class RandomTeams extends Component {
                 <div className={classes.LogosAndNames}>
                     <div className={classes.PlayerName}>
                         <p>BOJO'S TEAM</p>
-                        <TransitionGroup>
-                            <CSSTransition
-                                key={this.state.bojoTeam}
-                                timeout={1000}
-                                classNames={fadeTransition}
-                            >
-                                {bojoTeamRender}
-                            </CSSTransition>
-                        </TransitionGroup>
+                        {bojoTeamRender}
                     </div>
                     <div className={classes.PlayerName}>
                         <p>MACIEK'S TEAM</p>
-                        <TransitionGroup>
-                            <CSSTransition
-                                key={this.state.maciekTeam}
-                                timeout={1000}
-                                classNames={fadeTransition}
-                            >
-                                {maciekTeamRender}
-                            </CSSTransition>
-                        </TransitionGroup>
+                        {maciekTeamRender}
                     </div>
                 </div>
                 <div className={classes.Checkbox}>
