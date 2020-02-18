@@ -21,14 +21,14 @@ h2 {
     margin: 10px 10px 10px 0;
 }
 
-.halfHeightContent{
+.HalfHeightContent{
     height: 295px;
     width: 400px;
     background-color: rgba(245, 245, 245, 0.85);
     margin: 10px 0px 10px 0;
 }
 
-@media(max-width: 1000px){
+@media(max-width: 900px){
     .Content{
         margin: 0 0 10px 0;
     }

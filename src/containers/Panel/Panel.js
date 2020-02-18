@@ -7,7 +7,7 @@ const Panel = (props) => {
     if (props.heightClass === 'full') {
         contentClasses = classes.Content
     } else if (props.heightClass === 'half') {
-        contentClasses = classes.halfHeightContent
+        contentClasses = classes.HalfHeightContent
     }
 
     return (

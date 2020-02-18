@@ -48,7 +48,7 @@ button:hover{
     }
 }
 
-@media(max-width: 1000px){
+@media(max-width: 900px){
 form{
     height: 150px;
     display: flex;

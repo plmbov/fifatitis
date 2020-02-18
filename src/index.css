@@ -22,7 +22,7 @@ body {
   src: local('EASPORTS15'), url(./fonts/EASPORTS15.ttf) format('truetype');
 }
 
-@media(max-width: 1000px){
+@media(max-width: 900px){
   body{
     background-size: 100% 100%;
 background-position-y: center;
