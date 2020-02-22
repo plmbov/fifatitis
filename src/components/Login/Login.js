@@ -28,7 +28,7 @@ class Login extends Component {
 
     render() {
         let loginMenu = (
-            <div>
+            <div className={classes.Container}>
                 <form onSubmit={this.submitHander}>
                     <input id='email' type='email' placeholder='E-mail' onChange={(event) => this.inputHandler('email', event)}></input>
                     <input id='password' type='password' placeholder='Password' onChange={(event) => this.inputHandler('password', event)}></input>
@@ -40,9 +40,11 @@ class Login extends Component {
 
         if (this.props.userLogged) {
             loginMenu = (
-                <div className={classes.userLogged}>
-                    <p>Enjoy using the app!</p>
-                    <button onClick={this.props.onRemoveCredentials}>LOG OUT</button>
+                <div className={classes.Container}>
+                    <div className={classes.userLogged}>
+                        <p>Enjoy using the app!</p>
+                        <button onClick={this.props.onRemoveCredentials}>LOG OUT</button>
+                    </div>
                 </div>
             )
         }

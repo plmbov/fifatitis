@@ -1,9 +1,14 @@
+.Container {
+    width: 100%;
+    text-align: center;
+}
+
 form input{
     background-color: transparent;
     margin: 0 10px;
     font: inherit;
     animation-name: autofill;
-    width: 250px;
+    width: 20%;
     color: rgba(245, 245, 245, 0.85)
 }
 
@@ -55,5 +60,9 @@ form{
     flex-direction: column;
     justify-content: space-between;
     margin-bottom: 20px;
+}
+form input{
+    width: 96%;
+    margin: 0 auto;
 }
 }

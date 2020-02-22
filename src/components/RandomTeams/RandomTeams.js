@@ -41,7 +41,6 @@ export class RandomTeams extends Component {
     }
 
     drawTeams = () => {
-        this.setState({ loading: true })
         let teams = this.state.teams
         if (teams.length <= 1) {
             this.setState({ popUpShown: true })
