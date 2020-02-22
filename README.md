@@ -9,7 +9,6 @@ Technologies used in the project:
 - Firebase
 
 It is in constant development. Main focus areas for upcoming time are:
-- Mobile CSS
 - Improving UX
 - Upgrading existing features
 
