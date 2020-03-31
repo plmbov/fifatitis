@@ -9,6 +9,7 @@ Technologies used in the project:
 - Firebase
 
 It is in constant development. Main focus areas for upcoming time are:
+- Redesigning RWD
 - Improving UX
 - Upgrading existing features
 
